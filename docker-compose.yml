@@ -1,0 +1,19 @@
+services:
+  database:
+    image: 'postgres:latest'
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - postgres-network
+    volumes:
+      - /db-data/:/var/lib/postgresql/data/
+  app:
+    image: angelaaraldi/hello-health:0.1
+    ports:
+      - "8080:8080"
+networks:
+  postgres-network:
+    driver: bridge
