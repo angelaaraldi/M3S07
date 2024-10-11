@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-health
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-health
+  template:
+    metadata:
+      labels:
+        app: hello-health
+    spec:
+      containers:
+        - name: app
+          image: angelaaraldi/hello-health:0.1
+          ports:
+            - containerPort: 8080
